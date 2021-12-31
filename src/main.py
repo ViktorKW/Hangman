@@ -1,3 +1,58 @@
+hangman = ["""
+ O
+-|-
+/ \\\n
+""",
+"""
+  O
+ -|-
+ / \\
+^^^^^
+|||||\n
+""",
+"""
+|
+|
+|      O
+|     -|-
+|     / \\
+|    ^^^^^
+|    |||||\n
+""",
+"""
+|-------
+|
+|      O
+|     -|-
+|     / \\
+|    ^^^^^
+|    |||||\n
+""",
+"""
+|-------
+|      |
+|      O
+|     -|-
+|     / \\
+|    ^^^^^
+|    |||||\n
+""",
+"""
+|-------
+|      |
+|      O     HANGMAN
+|     -|-    IS DEAD
+|     / \\
+|
+|\n
+"""
+
+]
+
+
+
+
+
 from random import randint
 
 
@@ -27,14 +82,14 @@ while True:
     #---game init
     os.system('clear')
     mystery_word = words_list[randint(0, len(words_list))]
-    
-    hangman = """
-     O
-    -|-
-    / \\\n
-    """
     #---game init end
     print("HANGMAN begins!\n")
-    print(hangman)
+    strikes = 0
+
+    while strikes <= 5:
+        print(hangman[strikes])
+        strikes+=1
+        input()
+
     input()
     break
