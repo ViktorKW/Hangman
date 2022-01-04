@@ -10,10 +10,10 @@ class hangman():
         for word in file:
             words_list.append(word)
 
-        return words_list[randint(0, len(words_list))]
+        return words_list[randint(0, len(words_list))].strip("\n")
 
 
     def __init__(self):
-        self.mystery_word = self.__get_mystery_word()
-        self.is_revealed = [False]*(len(self.mystery_word)-1)
+        self.mystery_word = "armada"#self.__get_mystery_word()
+        self.is_revealed = [False]*(len(self.mystery_word))
         self.strikes = 0

@@ -5,5 +5,6 @@ while True:
     os.system('clear')
     print("HANGMAN begins!\n")
     g = game_manager()
+    
     input()
     break
