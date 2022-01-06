@@ -1,4 +1,4 @@
-#import pdb
+import pdb
 import os
 from hangman import *
 from letter_table import *
@@ -30,8 +30,10 @@ class game_manager():
 
             os.system("clear")
             print(hangman_sprites[self.strikes])  #prints hangman
+            
+            print("\n")
             self.letter_table.print_table()  #prints alphabet
-
+            print("\n")
 
             for i in range(len(self.hangman.mystery_word)):  #print mystery_word
                 if self.hangman.is_revealed[i] == True:
@@ -40,15 +42,26 @@ class game_manager():
                     print("-", end="")
             print("")
 
+
             while True:
-                userInput = input()
+                userInput = input("Your input: ")
+                userInput = userInput.lower()
                 if len(userInput) == 1:
-                    break
+                    if userInput in self.letter_table.table:
+                        if self.letter_table.is_tagged[self.letter_table.table.index(userInput)]:
+                            print("You've already used that letter!")
+                            continue
+                        else:
+                            self.letter_table.is_tagged[self.letter_table.table.index(userInput)] = True
+                            break
+                    else:
+                        print ("Please enter valid character")
+                        continue
                 print ("Please enter only one character")
 
 
-            guessInLower = userInput.lower()
-            #for i in range(len(self.letter_table.table):
+            guessInLower = userInput
+
 
             success = False
             for i in range(len(self.hangman.mystery_word)):
@@ -64,5 +77,5 @@ class game_manager():
             else:
                 self.strikes += 1
 
-        if self.strikes == len(hangman_sprites):
+        if self.strikes == len(hangman_sprites)-1:
             self.__loss()

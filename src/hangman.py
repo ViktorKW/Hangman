@@ -14,6 +14,6 @@ class hangman():
 
 
     def __init__(self):
-        self.mystery_word = "armada"#self.__get_mystery_word()
+        self.mystery_word = self.__get_mystery_word()
         self.is_revealed = [False]*(len(self.mystery_word))
         self.strikes = 0
